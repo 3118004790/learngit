@@ -28,31 +28,37 @@ void main()  {
 	    switch(chose)  {
 	    	case 1:  {
 	    		scanf("%d",&size); 
-	    		Status initStack(s,size);
+	    		initStack(s,size);
 	    		break;
 			}
+			
 			case 2:  {
-			    Status isEmptyStack(s);
+			    isEmptyStack(s);
 			    break;
 			}
+			
 		    case 3:  {
-			    Status getTopStack(s,e);
+			    getTopStack(s,e);
 			    printf("%d",* e);
 			    break;
 			}
+			
 		    case 4:  {
-		    	Status clearStack(s);
+		    	clearStack(s);
 				break;
 			}
+			
 		    case 5:  {
-			    Status destroyStack(s);
+			    destroyStack(s);
 				break;
 		    }
+		    
 		    case 6:  {
 		    	scanf("%d",&length);
-		    	Status stackLength(s,length);
+		    	stackLength(s,length);
 				break;
-			}    
+			} 
+			   
 		    case 7:  {
 				while(type!=1||type!=2||type!=3)  {
 					printf("*********************\n");
@@ -61,20 +67,21 @@ void main()  {
 		    	    printf("* 3.    字符型      *\n");
 		    	    printf("*********************\n");
 					scanf("%d",&type);
+					
 					switch(type)  {
 						case 1:  {	
 		    			    scanf("%d",&data);
-		    			    Status pushStack(s,data);
+		    			    pushStack(s,data);
 						    break;
 					    }
 		    		    case 2:  {
 		    			    scanf("%f",&data); 
-		    			    Status pushStack(s,data);
+		    			    pushStack(s,data);
 						    break;
 					    }
 					    case 3:  {
 						    scanf("%c",&data); 
-						    Status pushStack(s,data);
+						    pushStack(s,data);
 						    break;
 					    default:  {
 						    printf("请重新输入1~3间的数字\n");
@@ -85,14 +92,17 @@ void main()  {
 				} 
 				break;  
 		    }
+		    
 		    case 8:  {
-			    Status popStack(s,data2);
-			    printf("%d",*data2)
+			    popStack(s,data2);
+			    printf("%d",*data2); 
 			    break;
 	        }
+	        
 	        case 9: {
 				break;
 			}
+			
 	        default:  {
 	        	printf("请重新输入1~9间的数字\n"); 
 				break;
