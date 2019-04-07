@@ -5,7 +5,8 @@
 void main()  {
 	LQueue *List=(LQueue *)malloc(sizeof(LQueue));
     int chose=0;
-	int data; 
+	int data;
+	int e=0;
 	while(chose!=9)  {
 		printf("***********************\n");
         printf("* 1.    初始化队列    *\n");
@@ -31,7 +32,7 @@ void main()  {
 			}
 			
 			case 3:  {
-				printf("队头元素为：%d\n",data);
+				GetHeadLQueue(List, e); 
 				break;
 			}
 			
@@ -51,9 +52,9 @@ void main()  {
 			}
 			
 			case 7:  {
-				printf("请输入一个整数\n");
+				printf("请输入一个整数："); 
 				scanf("%d",&data);
-				EnLQueue(List,&data);
+				EnLQueue(List, data);
 				break;
 			}
 			

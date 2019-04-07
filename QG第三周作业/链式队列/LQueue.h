@@ -25,7 +25,7 @@
 //链式队列结构
 typedef struct node
 {
-    int *data;                   //数据域指针
+    int data;                   //数据域指针
     struct node *next;            //指向当前结点的下一结点
 } Node;
 
@@ -77,7 +77,7 @@ Status IsEmptyLQueue(const LQueue *Q);
  *    @return         : 成功-TRUE; 失败-FALSE
  *  @notice      : 队列是否空
  */
-Status GetHeadLQueue(LQueue *Q, int *e);
+Status GetHeadLQueue(LQueue *Q, int e);
 
 /**
  *  @name        : int LengthLQueue(LQueue *Q)
@@ -95,7 +95,7 @@ int LengthLQueue(LQueue *Q);
  *    @return         : 成功-TRUE; 失败-FALSE
  *  @notice      : 队列是否为空
  */
-Status EnLQueue(LQueue *Q, int *data);
+Status EnLQueue(LQueue *Q, int data);
 
 /**
  *  @name        : Status DeLQueue(LQueue *Q)

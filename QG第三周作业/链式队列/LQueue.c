@@ -15,7 +15,8 @@ void InitLQueue(LQueue *Q)  {
         printf("内存分配失败！\n");
     }
     node->next=NULL;
-    Q->front=Q->rear=node;
+    Q->rear=node;
+    Q->front=Q->rear;
     Q->length=0;
     printf("初始化成功\n");
 } 
@@ -27,18 +28,8 @@ void InitLQueue(LQueue *Q)  {
  *  @notice      : None
  */
 void DestoryLQueue(LQueue *Q)  {
-	Node* node=Q->front->next;//队头元素
-	while (node)
-	{
-    	Q->front->next=node->next;//指向新的队头结点
-		if (Q->rear==node)//当删除的是队尾元素时，将队尾指针指向头结点
-		{
-			Q->rear=Q->front;
-		}
-		free(node);//释放旧的队头结点
-		node=Q->front->next;
-	}
-	free(node);
+	ClearLQueue(Q);
+	free(Q->front);
 	printf("已销毁队列请重新初始化\n");
 } 
 
@@ -67,14 +58,15 @@ Status IsEmptyLQueue(const LQueue *Q)  {
  *  @return      : 成功-TRUE; 失败-FALSE
  *  @notice      : 队列是否空
  */
-Status GetHeadLQueue(LQueue *Q, int *e)  {
+Status GetHeadLQueue(LQueue *Q, int e)  {
 	if(Q->length==0)  {
 		printf("队列为空！\n");
 		return FALSE;
 	}
 	else  {
-		e=Q->front->data;
-		return TRUE;
+		e=Q->front->data; 
+		printf("队头元素为：%d\n",e); 
+		return e;
 	}
 } 
 
@@ -102,26 +94,28 @@ int LengthLQueue(LQueue *Q)  {
  *  @return      : 成功-TRUE; 失败-FALSE
  *  @notice      : 队列是否为空
  */
-Status EnLQueue(LQueue *Q, int *data)  {
-	if(!Q)  {
-		return FALSE;	
+Status EnLQueue(LQueue *Q, int data)  {
+	Node *node=(Node *)malloc(sizeof(Node));
+	if(!node)  {
+		printf("内存分配失败！\n");
+		return FALSE;
 	}
 	else  {
-		Node *node=(Node *)malloc(sizeof(Node));
 		node->next=NULL;
-		node->data=data;
+	    node->data=data;
 		if(Q->length==0)  {
+			Q->front->next=node;
+			Q->rear->next=node;
 			Q->front=node;
 			Q->rear=node;
-			Q->length++;
 		}
-		else  {	
+		else  {
 			Q->rear->next=node;
-		    Q->rear=node;
-		    Q->length++;
+	        Q->rear=node;
 		}
-		printf("入队成功\n");
-		return TRUE;
+	    Q->length++;
+	    printf("入队成功\n");
+     	return TRUE;
 	}
 } 
 
@@ -133,15 +127,16 @@ Status EnLQueue(LQueue *Q, int *data)  {
  *    @notice      : None
  */
 Status DeLQueue(LQueue *Q)  {
-	if(!Q)  {
+	if(Q->length==0)  {
+		printf("队列为空！\n");
 		return FALSE;
 	}
 	else  {
 		Node *node=(Node *)malloc(sizeof(Node));
 		node=Q->front;
 		Q->front=node->next;
-		Q->length--;
 		free(node);
+		Q->length--;
 		printf("出队成功\n");
 		return TRUE;
 	}
@@ -154,10 +149,11 @@ Status DeLQueue(LQueue *Q)  {
  *  @notice      : None
  */
 void ClearLQueue(LQueue *Q)  {
-	Node* node=Q->front->next;//队头元素
+	Node* node=(Node *)malloc(sizeof(Node));
+	node=Q->front;//队头元素
 	while (node)
 	{
-    	Q->front->next=node->next;//指向新的队头结点
+    	Q->front=node->next;//指向新的队头结点
 		if (Q->rear==node)//当删除的是队尾元素时，将队尾指针指向头结点
 		{
 			Q->rear=Q->front;
