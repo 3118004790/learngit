@@ -1,6 +1,6 @@
 [Project]
-FileName=顺序栈.dev
-Name=顺序栈
+FileName=项目1.dev
+Name=项目1
 Type=1
 Ver=2
 ObjFiles=
@@ -51,7 +51,7 @@ AutoIncBuildNr=0
 SyncProduct=1
 
 [Unit1]
-FileName=SqStack.h
+FileName=main.c
 CompileCpp=0
 Folder=
 Compile=1
@@ -61,7 +61,7 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit2]
-FileName=SqStack.c
+FileName=linkedList.c
 CompileCpp=0
 Folder=
 Compile=1
@@ -71,7 +71,7 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit3]
-FileName=main.c
+FileName=..\head\linkedList.h
 CompileCpp=0
 Folder=
 Compile=1

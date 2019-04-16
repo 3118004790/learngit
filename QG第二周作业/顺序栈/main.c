@@ -31,34 +31,27 @@ void main()  {
 	    		initStack(s,size);
 	    		break;
 			}
-			
 			case 2:  {
 			    isEmptyStack(s);
 			    break;
 			}
-			
 		    case 3:  {
 			    getTopStack(s,e);
 			    printf("%d",* e);
 			    break;
 			}
-			
 		    case 4:  {
 		    	clearStack(s);
 				break;
 			}
-			
 		    case 5:  {
 			    destroyStack(s);
 				break;
 		    }
-		    
 		    case 6:  {
-		    	scanf("%d",&length);
-		    	stackLength(s,length);
+		    	stackLength(s,&length);
 				break;
-			} 
-			   
+			}    
 		    case 7:  {
 				while(type!=1||type!=2||type!=3)  {
 					printf("*********************\n");
@@ -67,7 +60,6 @@ void main()  {
 		    	    printf("* 3.    字符型      *\n");
 		    	    printf("*********************\n");
 					scanf("%d",&type);
-					
 					switch(type)  {
 						case 1:  {	
 		    			    scanf("%d",&data);
@@ -92,17 +84,14 @@ void main()  {
 				} 
 				break;  
 		    }
-		    
 		    case 8:  {
 			    popStack(s,data2);
 			    printf("%d",*data2); 
 			    break;
 	        }
-	        
 	        case 9: {
 				break;
 			}
-			
 	        default:  {
 	        	printf("请重新输入1~9间的数字\n"); 
 				break;
